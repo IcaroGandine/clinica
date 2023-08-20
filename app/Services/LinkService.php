@@ -60,6 +60,8 @@ class LinkService
             $links = Link::orderBy('clicks', 'desc')->get();
         } elseif ($filterType === 'name') {
             $links = Link::orderBy('name')->get();
+        } elseif ($filterType === 'views') {
+            $links = Link::orderBy('views', 'desc')->get();
         } else {
             return response()->json(['error' => 'Invalid filter type'], 400);
         }
