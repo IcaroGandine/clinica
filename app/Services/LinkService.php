@@ -48,7 +48,8 @@ class LinkService
 
     public function getAllLinks()
     {
-        return Link::all();
+        $links = Link::all();
+        return response()->json($links);
     }
 
     public function getByFilter($request)

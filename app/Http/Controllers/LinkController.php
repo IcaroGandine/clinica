@@ -22,8 +22,7 @@ class LinkController extends Controller
      */
     public function getAll()
     {
-        $links = Link::all();
-        return response()->json($links);
+        return $this->linkService->getAllLinks();
     }
     /**
      * 
