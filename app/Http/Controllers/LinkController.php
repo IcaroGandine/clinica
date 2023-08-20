@@ -43,6 +43,14 @@ class LinkController extends Controller
     /**
      * 
      */
+    public function incrementClicks(Request $request, $id)
+    {
+        return $this->linkService->incrementClicks($request, $id);
+    }
+
+    /**
+     * 
+     */
     public function show(string $id)
     {
         //

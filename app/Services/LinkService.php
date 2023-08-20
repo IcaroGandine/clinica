@@ -68,4 +68,18 @@ class LinkService
 
         return response()->json($links);
     }
+
+    public function incrementClicks(Request $request, $id)
+    {
+        $link = Link::find($id);
+
+        if (!$link) {
+            return response()->json(['error' => 'Link not found'], 404);
+        }
+
+        $link->increment('clicks');
+        $link->save();
+
+        return response()->json(['message' => 'Clicks incremented'], 200);
+    }
 }
