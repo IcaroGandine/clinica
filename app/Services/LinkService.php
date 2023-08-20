@@ -82,4 +82,21 @@ class LinkService
 
         return response()->json(['message' => 'Clicks incremented'], 200);
     }
+
+    public function getSummary()
+    {
+        $totalClicks = Link::sum('clicks');
+        $totalViews = Link::sum('views');
+        $totalLinks = Link::count();
+        $avgCtr = (ceil(($totalClicks / $totalViews) * 100));
+
+        $data = [
+            'totalClicks' => $totalClicks,
+            'totalViews' => $totalViews,
+            'totalLinks' => $totalLinks,
+            'avgCtr' => $avgCtr
+        ];
+
+        return response()->json($data, 200);
+    }
 }

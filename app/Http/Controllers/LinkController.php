@@ -51,24 +51,9 @@ class LinkController extends Controller
     /**
      * 
      */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     *
-     */
-    public function update(Request $request, string $id)
+    public function getSummary()
     {
-        //
-    }
-
-    /**
-     *
-     */
-    public function destroy(string $id)
-    {
-        //
+        return $this->linkService->getSummary();
     }
 }

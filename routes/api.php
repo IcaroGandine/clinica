@@ -18,5 +18,6 @@ use App\Http\Controllers\LinkController;
 
 Route::get('/links/getAll', [LinkController::class, 'getAll']);
 Route::get('/links/getByFilter', [LinkController::class, 'getByFilter']);
+Route::get('/links/summary', [LinkController::class, 'getSummary']);
 Route::post('/links/create', [LinkController::class, 'create']);
 Route::put('/links/increment-clicks/{id}', [LinkController::class, 'incrementClicks']);
