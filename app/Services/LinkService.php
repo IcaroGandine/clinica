@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Link;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LinkService
 {
@@ -48,6 +49,8 @@ class LinkService
 
     public function getAllLinks()
     {
+        DB::table('links')
+            ->increment('views', 1);
         $links = Link::all();
         return response()->json($links);
     }
