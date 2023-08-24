@@ -102,4 +102,15 @@ class LinkService
 
         return response()->json($data, 200);
     }
+
+    public function deleteLink($id)
+    {
+        $link = Link::find($id);
+
+        if ($link) {
+            $link->delete();
+        } else {
+            return response()->json(['error' => 'Link not found'], 404);
+        }
+    }
 }
