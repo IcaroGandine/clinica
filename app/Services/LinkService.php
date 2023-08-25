@@ -91,7 +91,12 @@ class LinkService
         $totalClicks = Link::sum('clicks');
         $totalViews = Link::sum('views');
         $totalLinks = Link::count();
-        $avgCtr = (ceil(($totalClicks / $totalViews) * 100));
+
+        if ($totalViews > 0) {
+            $avgCtr = (ceil(($totalClicks / $totalViews) * 100));
+        } else {
+            $avgCtr = 0;
+        }
 
         $data = [
             'totalClicks' => $totalClicks,
