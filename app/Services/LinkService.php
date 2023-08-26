@@ -65,6 +65,8 @@ class LinkService
             $links = Link::orderBy('name')->get();
         } elseif ($filterType === 'views') {
             $links = Link::orderBy('views', 'desc')->get();
+        } elseif ($filterType === 'updated') {
+            $links = Link::orderBy('updated_at', 'desc')->get();
         } else {
             return response()->json(['error' => 'Invalid filter type'], 400);
         }
