@@ -58,9 +58,9 @@ class LinkService
     public function getByFilter(Request $request)
     {
         $filterType = $request->query('filter');
-        $nameFilter = $request->query('name');
+        $searchTerm = $request->query('search');
 
-        $query = Link::query(); // Comece com a consulta básica
+        $query = Link::query();
 
         if ($filterType === 'clicks') {
             $query->orderBy('clicks', 'desc');
@@ -74,12 +74,15 @@ class LinkService
             return response()->json(['error' => 'Invalid filter type'], 400);
         }
 
-        // Adicione a condição de filtro por nome
-        if ($nameFilter) {
-            $query->where('name', 'like', '%' . $nameFilter . '%');
+
+        if ($searchTerm) {
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('url', 'like', '%' . $searchTerm . '%');
+            });
         }
 
-        // Execute a consulta
+
         $links = $query->get();
 
         return response()->json($links);
