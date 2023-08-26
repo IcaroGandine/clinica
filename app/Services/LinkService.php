@@ -130,6 +130,18 @@ class LinkService
         }
     }
 
+    public function getByCode($code)
+    {
+        // Busca o link pelo código
+        $link = Link::where('code', $code)->first();
+
+        if (!$link) {
+            return response()->json(['message' => 'Link não encontrado'], 404);
+        }
+
+        return response()->json($link);
+    }
+
     public function updateLink(Request $request, $id)
     {
         // Validação dos campos

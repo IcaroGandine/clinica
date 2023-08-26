@@ -79,6 +79,15 @@ class LinkController extends Controller
      * 
      */
 
+    public function getByCode($code)
+    {
+        return $this->linkService->getByCode($code);
+    }
+
+    /**
+     * 
+     */
+
     public function update(Request $request, $id)
     {
         return $this->linkService->updateLink($request, $id);

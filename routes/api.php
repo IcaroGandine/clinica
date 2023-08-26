@@ -20,6 +20,7 @@ Route::get('/links/getAll', [LinkController::class, 'getAll']);
 Route::get('/links/getByFilter', [LinkController::class, 'getByFilter']);
 Route::get('/links/summary', [LinkController::class, 'getSummary']);
 Route::get('/links/getById/{id}', [LinkController::class, 'getLinkById']);
+Route::get('/links/getByCode/{code}', [LinkController::class, 'getByCode']);
 Route::post('/links/create', [LinkController::class, 'create']);
 Route::put('/links/increment-clicks/{id}', [LinkController::class, 'incrementClicks']);
 Route::put('/links/update/{id}', [LinkController::class, 'update']);
