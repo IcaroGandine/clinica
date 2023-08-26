@@ -118,4 +118,15 @@ class LinkService
             return response()->json(['error' => 'Link not found'], 404);
         }
     }
+
+    public function getLinkById($id)
+    {
+        $link = Link::find($id);
+
+        if ($link) {
+            return response()->json($link);
+        } else {
+            return response()->json(['error' => 'Link not found'], 404);
+        }
+    }
 }

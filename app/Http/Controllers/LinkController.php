@@ -65,4 +65,13 @@ class LinkController extends Controller
     {
         return $this->linkService->deleteLink($id);
     }
+
+    /**
+     * 
+     */
+
+    public function getLinkById($id)
+    {
+        return $this->linkService->getLinkById($id);
+    }
 }
