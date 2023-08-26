@@ -55,21 +55,32 @@ class LinkService
         return response()->json($links);
     }
 
-    public function getByFilter($request)
+    public function getByFilter(Request $request)
     {
         $filterType = $request->query('filter');
+        $nameFilter = $request->query('name');
+
+        $query = Link::query(); // Comece com a consulta básica
 
         if ($filterType === 'clicks') {
-            $links = Link::orderBy('clicks', 'desc')->get();
+            $query->orderBy('clicks', 'desc');
         } elseif ($filterType === 'name') {
-            $links = Link::orderBy('name')->get();
+            $query->orderBy('name');
         } elseif ($filterType === 'views') {
-            $links = Link::orderBy('views', 'desc')->get();
+            $query->orderBy('views', 'desc');
         } elseif ($filterType === 'updated') {
-            $links = Link::orderBy('updated_at', 'desc')->get();
+            $query->orderBy('updated_at', 'desc');
         } else {
             return response()->json(['error' => 'Invalid filter type'], 400);
         }
+
+        // Adicione a condição de filtro por nome
+        if ($nameFilter) {
+            $query->where('name', 'like', '%' . $nameFilter . '%');
+        }
+
+        // Execute a consulta
+        $links = $query->get();
 
         return response()->json($links);
     }
