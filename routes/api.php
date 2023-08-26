@@ -22,4 +22,5 @@ Route::get('/links/summary', [LinkController::class, 'getSummary']);
 Route::get('/links/getById/{id}', [LinkController::class, 'getLinkById']);
 Route::post('/links/create', [LinkController::class, 'create']);
 Route::put('/links/increment-clicks/{id}', [LinkController::class, 'incrementClicks']);
+Route::put('/links/update/{id}', [LinkController::class, 'update']);
 Route::delete('/links/delete/{id}', [LinkController::class, 'delete']);

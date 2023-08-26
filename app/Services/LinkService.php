@@ -129,4 +129,24 @@ class LinkService
             return response()->json(['error' => 'Link not found'], 404);
         }
     }
+
+    public function updateLink(Request $request, $id)
+    {
+        // Validação dos campos
+        $request->validate([
+            'name' => 'required|string',
+            'url' => 'required|url',
+        ]);
+
+        // Busca o link pelo ID
+        $link = Link::findOrFail($id);
+
+        // Atualiza os campos
+        $link->update([
+            'name' => $request->input('name'),
+            'url' => $request->input('url'),
+        ]);
+
+        return response()->json(['message' => 'Link atualizado com sucesso']);
+    }
 }
