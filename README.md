@@ -19,12 +19,12 @@ Este projeto é um encurtador de links desenvolvido para servir como um teste t�
 ## Como rodar o projeto
 
 ### Preparando o back-end
-1 - Clone este repositório
-2 - Abra um terminal na pasta clonada
-3 - Instale as dependências rodando `composer install` e `npm install`
-4 - Este projeto usa variáveis de ambiente para se conectar com o banco, então crie um ou peça para mim se ainda não possui
-5 - Adicione o .env na raiz do projeto (ver passo 4 se não tiver)
-6 - Rode `php artisan serve` para iniciar o servidor
+1 - Clone este repositório <br>
+2 - Abra um terminal na pasta clonada <br> 
+3 - Instale as dependências rodando `composer install` e `npm install` <br>
+4 - Este projeto usa variáveis de ambiente para se conectar com o banco, então crie um ou peça para mim se ainda não possui <br>
+5 - Adicione o .env na raiz do projeto (ver passo 4 se não tiver) <br>
+6 - Rode `php artisan serve` para iniciar o servidor <br>
 
 OBS - Não é necessário rodar migrations caso vá utilizar o banco hospedado no Render.
 
